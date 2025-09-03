@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yeni Sipariş - Rumy Cookies</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f8f9fa;
+      }
+      .container {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      .header {
+        background: linear-gradient(135deg, #b5755c 0%, #8b5a47 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 600;
+      }
+      .header p {
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+        font-size: 16px;
+      }
+      .content {
+        padding: 30px;
+      }
+      .order-info {
+        background-color: #fef3e2;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border-left: 4px solid #b5755c;
+      }
+      .order-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #b5755c;
+        margin-bottom: 10px;
+      }
+      .customer-info {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 5px 0;
+      }
+      .info-label {
+        font-weight: 600;
+        color: #555;
+      }
+      .info-value {
+        color: #333;
+      }
+      .items-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .items-table th {
+        background-color: #b5755c;
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+      }
+      .items-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      .items-table tr:last-child td {
+        border-bottom: none;
+      }
+      .total-section {
+        background-color: #fee2ba;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .total-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 16px;
+      }
+      .total-final {
+        font-size: 20px;
+        font-weight: bold;
+        color: #b5755c;
+        border-top: 2px solid #b5755c;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+      .footer {
+        background-color: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+      }
+      .logo {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #b5755c;
+      }
+      .status-badge {
+        display: inline-block;
+        background-color: #ffc107;
+        color: #856404;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">🍪</div>
+        <h1>Yeni Sipariş Alındı!</h1>
+        <p>Rummy Cookies - Özel Kurabiye Siparişleri</p>
+      </div>
+
+      <div class="content">
+        <div class="order-info">
+          <div class="order-number">Sipariş No: {{orderNumber}}</div>
+          <div class="status-badge">{{status}}</div>
+          <p style="margin: 15px 0 0 0; color: #666">Sipariş Tarihi: {{orderDate}}</p>
+        </div>
+
+        <div class="customer-info">
+          <h3 style="margin-top: 0; color: #b5755c">Müşteri Bilgileri</h3>
+          <div class="info-row">
+            <span class="info-label">Ad Soyad:</span>
+            <span class="info-value">{{customerName}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">E-posta:</span>
+            <span class="info-value">{{customerEmail}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Telefon:</span>
+            <span class="info-value">{{customerPhone}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Adres:</span>
+            <span class="info-value">{{customerAddress}}</span>
+          </div>
+          {{#if customText}}
+          <div class="info-row">
+            <span class="info-label">Ürüne Yazılacak:</span>
+            <span class="info-value" style="font-style: italic; color: #b5755c"
+              >"{{customText}}"</span
+            >
+          </div>
+          {{/if}} {{#if deliveryDate}}
+          <div class="info-row">
+            <span class="info-label">Etkinlik Tarihi:</span>
+            <span class="info-value">{{deliveryDate}}</span>
+          </div>
+          {{/if}}
+        </div>
+
+        <h3 style="color: #b5755c; margin-top: 30px">Sipariş Detayları</h3>
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th>Ürün</th>
+              <th>Adet</th>
+              <th>Birim Fiyat</th>
+              <th>Toplam</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each items}}
+            <tr>
+              <td>
+                <strong>{{name}}</strong>
+              </td>
+              <td>{{quantity}}</td>
+              <td>{{currency}}{{price}}</td>
+              <td><strong>{{currency}}{{subtotal}}</strong></td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+
+        <div class="total-section">
+          <div class="total-row">
+            <span>Ara Toplam:</span>
+            <span>{{currency}}{{subtotal}}</span>
+          </div>
+          <div class="total-row">
+            <span>Kargo:</span>
+            <span>{{shippingText}}</span>
+          </div>
+          <div class="total-row total-final">
+            <span>TOPLAM:</span>
+            <span>{{currency}}{{total}}</span>
+          </div>
+        </div>
+
+        <div style="background-color: #e3f2fd; border-radius: 8px; padding: 20px; margin: 20px 0">
+          <h4 style="margin-top: 0; color: #1976d2">📧 Ödeme Bilgileri</h4>
+          <p style="margin: 5px 0"><strong>Ödeme Yöntemi:</strong> {{paymentMethod}}</p>
+          {{#if paymentProof}}
+          <p style="margin: 5px 0"><strong>Dekont:</strong> Yüklendi</p>
+          {{/if}}
+        </div>
+
+        {{#if notes}}
+        <div style="background-color: #f3e5f5; border-radius: 8px; padding: 20px; margin: 20px 0">
+          <h4 style="margin-top: 0; color: #7b1fa2">📝 Özel Notlar</h4>
+          <p style="margin: 5px 0">{{notes}}</p>
+        </div>
+        {{/if}}
+      </div>
+
+      <div class="footer">
+        <p><strong>Rummy Cookies</strong> - Özel Kurabiye Siparişleri</p>
+        <p>Bu e-posta otomatik olarak gönderilmiştir. Lütfen yanıtlamayın.</p>
+      </div>
+    </div>
+  </body>
+</html>

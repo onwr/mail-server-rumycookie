@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siparişiniz Kargoya Verildi - Rummy Cookies</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f8f9fa;
+      }
+      .container {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      .header {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 600;
+      }
+      .header p {
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+        font-size: 16px;
+      }
+      .content {
+        padding: 30px;
+      }
+      .shipping-info {
+        background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%);
+        border-radius: 12px;
+        padding: 25px;
+        margin: 20px 0;
+        border: 2px solid #28a745;
+        text-align: center;
+      }
+      .shipping-icon {
+        font-size: 48px;
+        margin-bottom: 15px;
+      }
+      .tracking-number {
+        background-color: #28a745;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 15px 0;
+        display: inline-block;
+        letter-spacing: 1px;
+      }
+      .shipping-company {
+        font-size: 20px;
+        font-weight: 600;
+        color: #28a745;
+        margin: 10px 0;
+      }
+      .order-info {
+        background-color: #fef3e2;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border-left: 4px solid #b5755c;
+      }
+      .order-number {
+        font-size: 20px;
+        font-weight: bold;
+        color: #b5755c;
+        margin-bottom: 10px;
+      }
+      .customer-info {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 5px 0;
+      }
+      .info-label {
+        font-weight: 600;
+        color: #555;
+      }
+      .info-value {
+        color: #333;
+      }
+      .items-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .items-table th {
+        background-color: #b5755c;
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+      }
+      .items-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      .items-table tr:last-child td {
+        border-bottom: none;
+      }
+      .total-section {
+        background-color: #fee2ba;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .total-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 16px;
+      }
+      .total-final {
+        font-size: 20px;
+        font-weight: bold;
+        color: #b5755c;
+        border-top: 2px solid #b5755c;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+      .tracking-info {
+        background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border-left: 4px solid #ffc107;
+      }
+      .tracking-button {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 10px 0;
+        transition: background-color 0.3s;
+      }
+      .tracking-button:hover {
+        background-color: #0056b3;
+      }
+      .footer {
+        background-color: #f8f9fa;
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+      }
+      .logo {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #28a745;
+      }
+      .status-badge {
+        display: inline-block;
+        background-color: #28a745;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .delivery-info {
+        background-color: #e3f2fd;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">🚚</div>
+        <h1>Siparişiniz Kargoya Verildi!</h1>
+        <p>Rummy Cookies - Özel Kurabiye Siparişleri</p>
+      </div>
+
+      <div class="content">
+        <div class="shipping-info">
+          <div class="shipping-icon">📦</div>
+          <h2 style="margin: 0 0 15px 0; color: #28a745">Kargo Bilgileri</h2>
+          <div class="shipping-company">{{shippingCompany}}</div>
+          <div class="tracking-number">Takip No: {{trackingNumber}}</div>
+          <p style="margin: 15px 0 0 0; color: #666">Kargoya Verilme Tarihi: {{shippingDate}}</p>
+        </div>
+
+        <div class="tracking-info">
+          <h3 style="margin-top: 0; color: #856404">🔍 Kargo Takibi</h3>
+          <p>Kargonuzun durumunu takip etmek için aşağıdaki bilgileri kullanabilirsiniz:</p>
+          <p><strong>Kargo Firması:</strong> {{shippingCompany}}</p>
+          <p><strong>Takip Numarası:</strong> {{trackingNumber}}</p>
+          {{#if trackingUrl}}
+          <a href="{{trackingUrl}}" class="tracking-button">Kargo Durumunu Takip Et</a>
+          {{/if}}
+        </div>
+
+        <div class="order-info">
+          <div class="order-number">Sipariş No: {{orderNumber}}</div>
+          <div class="status-badge">Kargoya Verildi</div>
+          <p style="margin: 15px 0 0 0; color: #666">Sipariş Tarihi: {{orderDate}}</p>
+        </div>
+
+        <div class="customer-info">
+          <h3 style="margin-top: 0; color: #b5755c">Teslimat Bilgileri</h3>
+          <div class="info-row">
+            <span class="info-label">Ad Soyad:</span>
+            <span class="info-value">{{customerName}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Telefon:</span>
+            <span class="info-value">{{customerPhone}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Adres:</span>
+            <span class="info-value">{{customerAddress}}</span>
+          </div>
+          {{#if deliveryDate}}
+          <div class="info-row">
+            <span class="info-label">Etkinlik Tarihi:</span>
+            <span class="info-value">{{deliveryDate}}</span>
+          </div>
+          {{/if}}
+        </div>
+
+        <div class="delivery-info">
+          <h4 style="margin-top: 0; color: #1976d2">📋 Sipariş İçeriği</h4>
+          <table class="items-table">
+            <thead>
+              <tr>
+                <th>Ürün</th>
+                <th>Adet</th>
+                <th>Birim Fiyat</th>
+                <th>Toplam</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each items}}
+              <tr>
+                <td>
+                  <strong>{{name}}</strong>
+                </td>
+                <td>{{quantity}}</td>
+                <td>{{currency}}{{price}}</td>
+                <td><strong>{{currency}}{{subtotal}}</strong></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="total-section">
+          <div class="total-row">
+            <span>Ara Toplam:</span>
+            <span>{{currency}}{{subtotal}}</span>
+          </div>
+          <div class="total-row">
+            <span>Kargo:</span>
+            <span>{{shippingText}}</span>
+          </div>
+          <div class="total-row total-final">
+            <span>TOPLAM:</span>
+            <span>{{currency}}{{total}}</span>
+          </div>
+        </div>
+
+        <div
+          style="
+            background-color: #d4edda;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #28a745;
+          "
+        >
+          <h4 style="margin-top: 0; color: #155724">✅ Teslimat Bilgileri</h4>
+          <p style="margin: 5px 0"><strong>Kargo Firması:</strong> {{shippingCompany}}</p>
+          <p style="margin: 5px 0"><strong>Takip Numarası:</strong> {{trackingNumber}}</p>
+          <p style="margin: 5px 0"><strong>Kargoya Verilme Tarihi:</strong> {{shippingDate}}</p>
+          <p style="margin: 15px 0 5px 0; color: #155724">
+            <strong>💡 Not:</strong> Kargonuz genellikle 1-3 iş günü içinde teslim edilir.
+          </p>
+        </div>
+
+        {{#if customText}}
+        <div style="background-color: #f3e5f5; border-radius: 8px; padding: 20px; margin: 20px 0">
+          <h4 style="margin-top: 0; color: #7b1fa2">🍪 Özel Yazı</h4>
+          <p style="margin: 5px 0; font-style: italic; color: #b5755c">"{{customText}}"</p>
+        </div>
+        {{/if}}
+      </div>
+
+      <div class="footer">
+        <p><strong>Rummy Cookies</strong> - Özel Kurabiye Siparişleri</p>
+        <p>Bu e-posta otomatik olarak gönderilmiştir. Lütfen yanıtlamayın.</p>
+      </div>
+    </div>
+  </body>
+</html>
